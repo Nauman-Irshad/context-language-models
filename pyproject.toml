@@ -25,7 +25,7 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 where = ["clm"]
-include = ["clm_harness*", "clm_icl*"]
+include = ["clm_harness*", "clm_icl*", "clm_contextbench*"]
 
 [tool.setuptools.package-data]
 "clm_harness" = ["configs/*.yaml"]

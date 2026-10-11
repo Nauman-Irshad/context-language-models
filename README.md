@@ -78,11 +78,21 @@ clm-harbor run -p <harbor-task> -a clm-minimal -m openai/<model> \
 | [`clm/clm_harness`](clm/clm_harness/) | CLMs implemented in [Harbor](https://github.com/laude-institute/harbor) |
 | [`clm/clm_icl`](clm/clm_icl/) | In-context learning for CLMs |
 | [`clm/clm_rl`](clm/clm_rl/) | Reinforcement learning for CLMs |
+| [`clm/clm_contextbench`](clm/clm_contextbench/) | CLMs on ContextBench |
 | [`suffix_cache_reuse`](suffix_cache_reuse/) | Suffix Cache Reuse for CLM efficient serving |
 
-## Coming soon
+## ContextBench
 
-- [ ] ContextBench
+[ContextBench](https://github.com/RulinShao/ContextBench) measures what an agent keeps, updates,
+and offloads when its input does not fit in its context window. The tasks are also on Hugging Face
+at [context-language-model/ContextBench](https://huggingface.co/datasets/context-language-model/ContextBench).
+Run CLM on all of them with [Harbor](https://github.com/laude-institute/harbor) in one line
+(see [`clm/clm_contextbench`](clm/clm_contextbench/)):
+
+```bash
+harbor jobs start --repo RulinShao/ContextBench -d contextbench \
+  -a clm_contextbench:ClmStream -m openai/<model> --agent-kwarg api_base=http://localhost:8000/v1
+```
 
 ## Citation
 
