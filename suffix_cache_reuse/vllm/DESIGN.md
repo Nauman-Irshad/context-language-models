@@ -9,7 +9,7 @@ This document describes how Suffix Cache Reuse (SCR) fits into vLLM's v1 engine:
 - hybrid (linear-attention) models;
 - what an upstream vLLM hook would need to provide.
 
-The algorithm and its defaults are those of the [SGLang version](../README.md).
+The algorithm and its defaults are those of the [SGLang version](../sglang/README.md).
 
 ## 1. vLLM v1 internals that matter
 

@@ -79,7 +79,8 @@ clm-harbor run -p <harbor-task> -a clm-minimal -m openai/<model> \
 | [`clm/clm_icl`](clm/clm_icl/) | In-context learning for CLMs |
 | [`clm/clm_rl`](clm/clm_rl/) | Reinforcement learning for CLMs |
 | [`clm/clm_contextbench`](clm/clm_contextbench/) | CLMs on ContextBench |
-| [`suffix_cache_reuse`](suffix_cache_reuse/) | Suffix Cache Reuse for CLM efficient serving |
+| [`suffix_cache_reuse`](suffix_cache_reuse/) | Suffix Cache Reuse for CLM efficient serving: overview and results |
+| [`suffix_cache_reuse/sglang`](suffix_cache_reuse/sglang/) | Suffix Cache Reuse for SGLang |
 | [`suffix_cache_reuse/vllm`](suffix_cache_reuse/vllm/) | Suffix Cache Reuse for vLLM |
 
 ## ContextBench

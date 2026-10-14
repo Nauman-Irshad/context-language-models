@@ -1,7 +1,7 @@
 # Suffix Cache Reuse for vLLM
 
-Suffix Cache Reuse (SCR) for vLLM 0.19.1 (v1 engine). It is a port of
-[Suffix Cache Reuse](../README.md), which is built on SGLang.
+Suffix Cache Reuse (SCR) for vLLM 0.19.1 (v1 engine). It is a port of the
+[SGLang version](../sglang/) of [Suffix Cache Reuse](../README.md).
 
 When an agent edits its context, the prompt changes in the middle, not only at the end.
 vLLM's prefix cache then re-prefills every token after the first change, including text
