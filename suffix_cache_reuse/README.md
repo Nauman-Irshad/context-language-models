@@ -17,14 +17,17 @@ reuse must re-prefill all tokens after the first mismatch (B′ and C).
 ## Results
 
 SCR effectively reduces cache re-prefilling, matching the standard SGLang serving with
-65.0% of its empirical prefix-reuse FLOPs on BrowseComp-Plus (BCP). SCR is not limited to
+65.5% of its empirical prefix-reuse FLOPs on BrowseComp-Plus (BCP), averaged over three seeds
+(accuracy 60.6% with SCR and 59.0% with standard serving). SCR is not limited to
 CLMs: serving engines commonly strip prior reasoning tokens from chat histories, causing
 subsequent preserved tokens to be re-prefilled, and SCR also reduces this re-prefilling cost.
 
 <p align="center"><img src="assets/scr_bcp830_strip.png" width="100%" alt="SCR vs. standard SGLang on BCP"></p>
-<p align="center"><em>SCR and standard SGLang serving on BCP with Qwen3.6-27B. Left: task accuracy and
+<p align="center"><em>SCR and standard SGLang serving on BCP with Qwen3.6-27B, pooled over three seeds. Left: task accuracy and
 prefix-reuse FLOPs per question. Right: server-side compute decomposition, showing the fraction
 of prompt tokens by compute type across all turns and turns following context edits.</em></p>
+
+SCR is also available for vLLM: see [`vllm/`](vllm/) for the vLLM 0.19.1 version and its results.
 
 ## How it works
 
@@ -72,8 +75,8 @@ often remove the reasoning block from earlier assistant turns once the next user
 arrives. Standard serving then re-prefills all preserved text after the first removed block,
 even when the agent never edits its own context. SCR treats reasoning stripping as another
 context edit and reuses the cached states of the preserved text. On BCP, of the 7.8% of all
-prompt tokens reused by SCR beyond prefix-cache hits, 5.3 points come from reasoning
-stripping and 2.5 from other context edits.
+prompt tokens reused by SCR beyond prefix-cache hits, 5.4 points come from reasoning
+stripping and 2.4 from other context edits.
 
 <p align="center"><img src="assets/scr_strip_savings.png" width="100%" alt="SCR savings from reasoning stripping"></p>
 <p align="center"><em>SCR reuses cached states after model-driven context edits and after reasoning tokens are
